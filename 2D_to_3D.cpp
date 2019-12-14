@@ -17,14 +17,14 @@ typedef struct
 } POINT3D;
 
 
-const int		POINTS_MAX_SIZE = 100;
-const int		DRAW_POINT_SIZE = 5;
-const int		SLICES = 360;
+const int	POINTS_MAX_SIZE = 100;
+const int	DRAW_POINT_SIZE = 5;
+const int	SLICES = 360;
 const double	PI = 3.14;
 const double	WIN_SIZE = 600.0;
 
-int				m_currSize = 0;
-POINT2D			m_points[POINTS_MAX_SIZE];
+int		m_currSize = 0;
+POINT2D		m_points[POINTS_MAX_SIZE];
 
 
 void init();
@@ -44,7 +44,7 @@ void init()
 {
 	glClearColor( 0, 0, 0.3, 0 );	// color of window background
 	glOrtho( -1, 1, -1, 1, -1, 1 );	// set the coordinates system
-	glEnable( GL_DEPTH_TEST );		// use Z-buffer
+	glEnable( GL_DEPTH_TEST );	// use Z-buffer
 }
 //--------------------------------------------------------------------------//
 void drawCylinder( int n, double topr, double bottomr )
@@ -56,10 +56,10 @@ void drawCylinder( int n, double topr, double bottomr )
 	{
 		glBegin( GL_POLYGON );
 		glColor3d( 1 - 0.7 * fabs( sin( alpha ) ), 1 - fabs( sin( alpha ) ), ( 1 + cos( alpha ) ) / 2 );
-		glVertex3d( topr * sin( alpha ), 1, topr * cos( alpha ) );						//2
-		glVertex3d( topr * sin( alpha + teta ), 1, topr * cos( alpha + teta ) );		//3
+		glVertex3d( topr * sin( alpha ), 1, topr * cos( alpha ) );			//2
+		glVertex3d( topr * sin( alpha + teta ), 1, topr * cos( alpha + teta ) );	//3
 		glVertex3d( bottomr * sin( alpha + teta ), 0, bottomr * cos( alpha + teta ) );	//4
-		glVertex3d( bottomr * sin( alpha ), 0, bottomr * cos( alpha ) );				//1
+		glVertex3d( bottomr * sin( alpha ), 0, bottomr * cos( alpha ) );		//1
 		glEnd();
 	}
 }
@@ -105,32 +105,32 @@ void drawBackground()
 	//1. draw right side 
 	glPushMatrix();
 	{
-		glTranslated(0, 0, -0.001); //backwords
+		glTranslated( 0, 0, -0.001 );  //backwords
 
-		glBegin(GL_POLYGON);
-		glColor3d(0.5, 0.5, 0.5);	//gray
-		glVertex3d(0, 1, 0);
-		glVertex3d(1, 1, 0);
-		glVertex3d(1, -1, 0);
-		glVertex3d(0, -1, 0);
+		glBegin( GL_POLYGON );
+		glColor3d( 0.5, 0.5, 0.5 );	//gray
+		glVertex3d( 0, 1, 0 );
+		glVertex3d( 1, 1, 0 );
+		glVertex3d( 1, -1, 0 );
+		glVertex3d( 0, -1, 0 );
 		glEnd();
 	}
 	glPopMatrix();
 
 	//2. draw aux y
-	glBegin(GL_LINES);
-	glColor3d(1, 1, 1);
-	glVertex3d(0.5, 1, 0);		
-	glVertex3d(0.5, -1, 0);		
+	glBegin( GL_LINES );
+	glColor3d( 1, 1, 1 );
+	glVertex3d( 0.5, 1, 0 );		
+	glVertex3d( 0.5, -1, 0 );		
 	glEnd();
 
 	//3. draw left side 
-	glBegin(GL_POLYGON);
-	glColor3d(0.5, 0.5, 1);
-	glVertex3d(-1, 1, 0);
-	glVertex3d(0, 1, 0);
-	glVertex3d(0, -1, 0);
-	glVertex3d(-1, -1, 0);
+	glBegin( GL_POLYGON );
+	glColor3d( 0.5, 0.5, 1 );
+	glVertex3d( -1, 1, 0 );
+	glVertex3d( 0, 1, 0 );
+	glVertex3d( 0, -1, 0 );
+	glVertex3d( -1, -1, 0 );
 	glEnd();
 }
 //--------------------------------------------------------------------------//
@@ -142,9 +142,9 @@ void display()
 
 	glMatrixMode( GL_PROJECTION );
 	glFrustum( -1, 1, -1, 1, 1, 300 );
-	gluLookAt(	0, 0, 2,	// eye coordinates
-				0, 0, 0,	// point of interest
-				0, 1, 0	);	// up
+	gluLookAt( 	0, 0, 2,	// eye coordinates
+			0, 0, 0,	// point of interest
+			0, 1, 0	);	// up
 
 	glPushMatrix();
 	{
